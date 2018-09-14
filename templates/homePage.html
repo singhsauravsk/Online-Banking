@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Admin</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap4-executive-suite.css}">
+			<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap4-executive-suite.min.css}">
+		<!--===============================================================================================-->
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+		<!--===============================================================================================-->	
+			<link rel="icon" type="image/png" th:href="@{images/icons/favicon.ico}"/>
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{vendor/bootstrap/css/bootstrap.min.css}">
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{fonts/Linearicons-Free-v1.0.0/icon-font.min.css}">
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{vendor/animate/animate.css}">
+		<!--===============================================================================================-->	
+			<link rel="stylesheet" type="text/css" th:href="@{vendor/css-hamburgers/hamburgers.min.css}">
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{vendor/animsition/css/animsition.min.css}">
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{vendor/select2/select2.min.css}">
+		<!--===============================================================================================-->	
+			<link rel="stylesheet" type="text/css" th:href="@{vendor/daterangepicker/daterangepicker.css}">
+		<!--===============================================================================================-->
+			<link rel="stylesheet" type="text/css" th:href="@{css/util.css}">
+			<link rel="stylesheet" type="text/css" th:href="@{css/main.css}">
+		<!--===============================================================================================-->
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="navbar-brand">
+				<span class="navbar-brand">Welcome</span>
+				<span class="navbar-brand" th:text="${adminName}"></span>
+			</div>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+	
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+				</ul>
+				<div class="navbar-brand">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+					  	Add Account
+					</button>
+				</div>
+				<div class="navbar-brand">
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="text" placeholder="Search By Account Number" aria-label="Search">
+					    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</div>
+				<div class="navbar-brand">
+					<form class="form-inline my-2 my-lg-0">
+						<input class="form-control mr-sm-2" type="text" placeholder="Search By Holder Name" aria-label="Search">
+					    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</div>
+				<a href = "logout"><button  id = "logout-button" type="button" class="btn btn-primary btn-sm">Logout</button></a>
+			</div>
+		</nav>
+		
+		<!-- Modal -->
+		<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Create New Account</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<form class="login100-form validate-form" id = "create-account-form">
+							<div class="wrap-input100 validate-input m-b-26" data-validate="Account holder name is required">
+								<span class="label-input100">Account Holder</span>
+								<input class="input100" id="holderName" type="text" placeholder="Account Holder Name">
+								<span class="focus-input100"></span>
+							</div>
+							<div class="wrap-input100 validate-input m-b-18" data-validate = "Account type is required">
+								<span class="label-input100">Account Type</span>
+								<input class="input100" type="text" id="accountType" placeholder="Account Type">
+								<span class="focus-input100"></span>
+							</div>
+							<div class="container-login100-form-btn">
+								<button class="login100-form-btn">
+									Login
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--===============================================================================================-->
+			<script th:src="@{js/bankingApp.js}"></script>
+		<!--===============================================================================================-->
+			<script th:src="@{vendor/jquery/jquery-3.2.1.min.js}"></script>
+		<!--===============================================================================================-->
+			<script th:src="@{vendor/animsition/js/animsition.min.js}"></script>
+		<!--===============================================================================================-->
+			<script th:src="@{vendor/bootstrap/js/popper.js}"></script>
+			<script th:src="@{vendor/bootstrap/js/bootstrap.min.js}"></script>
+		<!--===============================================================================================-->
+			<script th:src="@{vendor/select2/select2.min.js}"></script>
+		<!--===============================================================================================-->
+			<script th:src="@{vendor/daterangepicker/moment.min.js}"></script>
+			<script th:src="@{vendor/daterangepicker/daterangepicker.js}"></script>
+		<!--===============================================================================================-->
+			<script th:src="@{vendor/countdowntime/countdowntime.js}"></script>
+		<!--===============================================================================================-->
+			<script th:src="@{js/main.js}"></script>
+		<!--===============================================================================================-->
+	</body>
+</html>
